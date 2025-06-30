@@ -1,39 +1,50 @@
 --[[  
     @title XAO Stock Bot
     @description Grow a Garden Discord Stock Bot
-    https://www.roblox.com/games/126884695634066
 ]]
 
---// Loading GUI XAO
-local plr = game.Players.LocalPlayer
+--// FIXED: Loading GUI XAO
+local StarterGui = game:GetService("StarterGui")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- Buat GUI
 local gui = Instance.new("ScreenGui")
 gui.Name = "XAO_Loader"
 gui.ResetOnSpawn = false
-gui.Parent = plr:WaitForChild("PlayerGui")
+gui.IgnoreGuiInset = true
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+gui.Parent = player:WaitForChild("PlayerGui")
 
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 300, 0, 100)
-frame.Position = UDim2.new(0.5, -150, 0.5, -50)
-frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-frame.BorderSizePixel = 0
-frame.Parent = gui
+-- Background fullscreen
+local bg = Instance.new("Frame")
+bg.Size = UDim2.new(1, 0, 1, 0)
+bg.Position = UDim2.new(0, 0, 0, 0)
+bg.BackgroundColor3 = Color3.fromRGB(20, 20, 20) -- hitam gelap
+bg.BorderSizePixel = 0
+bg.Parent = gui
 
+-- Teks loading tengah
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 1, 0)
-title.Text = "🔷 XPERIA XAO"
-title.Font = Enum.Font.GothamBold
-title.TextSize = 28
+title.Text = "🔷 XPERIA XAO\nLoading..."
+title.Font = Enum.Font.GothamBlack
+title.TextSize = 36
 title.TextColor3 = Color3.new(1, 1, 1)
 title.BackgroundTransparency = 1
-title.Parent = frame
+title.TextStrokeTransparency = 0.5
+title.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+title.TextWrapped = true
+title.TextYAlignment = Enum.TextYAlignment.Center
+title.Parent = bg
 
 task.wait(3)
 gui:Destroy()
 
---// Config
+--// CONFIG
 _G.Configuration = {
     ["Enabled"] = true,
-    ["Webhook"] = "https://discord.com/api/webhooks/....", -- ganti webhook kamu
+    ["Webhook"] = "https://discord.com/api/webhooks/....", -- Ganti dengan webhook kamu
     ["Weather Reporting"] = true,
     ["Anti-AFK"] = true,
     ["Auto-Reconnect"] = true,
@@ -71,7 +82,7 @@ _G.Configuration = {
     }
 }
 
---// Services
+--// SERVICES
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
