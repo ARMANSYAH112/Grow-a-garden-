@@ -4,26 +4,30 @@
     https://www.roblox.com/games/126884695634066
 ]]
 
---// Loading GUI
+--// Loading GUI XAO
 local plr = game.Players.LocalPlayer
-local gui = Instance.new("ScreenGui", plr:WaitForChild("PlayerGui"))
+local gui = Instance.new("ScreenGui")
 gui.Name = "XAO_Loader"
+gui.ResetOnSpawn = false
+gui.Parent = plr:WaitForChild("PlayerGui")
 
-local frame = Instance.new("Frame", gui)
+local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 100)
 frame.Position = UDim2.new(0.5, -150, 0.5, -50)
-frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 frame.BorderSizePixel = 0
+frame.Parent = gui
 
-local title = Instance.new("TextLabel", frame)
+local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 1, 0)
 title.Text = "🔷 XPERIA XAO"
-title.Font = Enum.Font.SourceSansBold
+title.Font = Enum.Font.GothamBold
 title.TextSize = 28
 title.TextColor3 = Color3.new(1, 1, 1)
 title.BackgroundTransparency = 1
+title.Parent = frame
 
-wait(2)
+task.wait(3)
 gui:Destroy()
 
 --// Config
